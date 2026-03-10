@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - develop
   pull_request:
 
 jobs:
@@ -28,8 +29,26 @@ jobs:
         run: |
           PYTHONPATH=. pytest --alluredir=allure-results
 
-      - name: Generate Allure report
+      - name: Install Allure CLI
+        if: always()
         run: |
-          pip install allure-pytest
-          pip install allure-commandline
-          allure generate allure-results -o allure-report --clean
+          sudo apt-get update
+          sudo apt-get install -y default-jre wget
+          wget https://github.com/allure-framework/allure2/releases/download/2.29.0/allure-2.29.0.tgz
+          tar -zxvf allure-2.29.0.tgz
+          sudo mv allure-2.29.0 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
+
+      - name: Generate Allure report
+        if: always()
+        run: |
+          if [ -d allure-results ]; then
+            allure generate allure-results -o allure-report --clean
+          fi
+
+      - name: Upload Allure report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
