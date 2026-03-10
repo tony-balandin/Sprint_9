@@ -1,0 +1,5 @@
+BASE_URL = 'https://foodgram-frontend-1.prakticum-team.ru'
+RECIPES_URL = f'{BASE_URL}/recipes'
+SIGNIN_URL = f'{BASE_URL}/signin'
+SIGNUP_URL = f'{BASE_URL}/signup'
+CREATE_RECIPE_URL = f'{BASE_URL}/recipes/create'

@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","2680","Авторизованный пользователь может создать рецепт","tests","2026-03-10","passed","2026-03-10","TestRecipeCreation","test_recipe","",""
+"","1473","Успешная авторизация переводит на страницу рецептов и показывает кнопку выхода","tests","2026-03-10","passed","2026-03-10","TestAuthorization","test_auth","",""
+"","1714","Успешное создание аккаунта переводит на страницу авторизации","tests","2026-03-10","passed","2026-03-10","TestAccountCreation","test_account","",""
